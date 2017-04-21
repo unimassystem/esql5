@@ -5,7 +5,7 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
 
 特性介绍
 ----------------
-##接近标准SQL语法
+#接近标准SQL语法
 
     create table my_index.my_table (
          id keyword,
@@ -19,7 +19,7 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
     select count(*) from my_index.my_table group by age;
     
 
-##Create table
+#Create table
 
 	字段参数,ES中分词规则、索引类型、字段格式等高级参数的支持
 	
@@ -63,7 +63,7 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
     );
 	
 
-##Insert/Bulk
+#Insert/Bulk
 
 	单条数据插入
 	insert into my_index.index (name,age) values ('zhangsan',24);
@@ -79,7 +79,7 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
 	insert into my_index.index (dd) values ({address='zhejiang',postCode='330010'});
 	
 	
-##select/Aggregations
+#select/Aggregations
 
 	select * from my_table.my_index where name like 'john *' and age between 20 and 30 and (hotel = 'hanting' or flight = 'MH4510');
 	
