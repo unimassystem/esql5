@@ -25,7 +25,6 @@ from ql.dsl.Describe import Describe
 import sys
 import json
 from elasticsearch import Elasticsearch
-from pydoc import describe
 
 
 

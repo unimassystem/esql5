@@ -170,7 +170,7 @@ def response_cat(res,took):
 def response_mappings(res,took):
     
     response = {}
-    response['cols'] = ['index','doc_type','col_name','data_type']
+    response['cols'] = ['index','doc_type','col_name','data_type','properties']
     response['rows'] = []
     
     for _index in res.keys():
@@ -182,14 +182,14 @@ def response_mappings(res,took):
                 if 'properties' in doc_type.keys():
                     properties = doc_type['properties']
                     for _field in properties.keys():
-                        _type = 'unknown'
+                        _type = 'object'
+                        _properties = None
                         field = properties[_field]
                         if 'type' in field.keys():
                             _type = field['type']
-                        else:
-                            if 'properties' in field.keys():
-                                _type = 'Object'
-                        response['rows'].append([_index,_doc_type,_field,_type])
+                        if 'properties' in field.keys():
+                            _properties = field['properties']
+                        response['rows'].append([_index,_doc_type,_field,_type,_properties])
     response['total'] = len(response['rows'])
     response['took'] = took
     return response

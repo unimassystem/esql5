@@ -106,4 +106,3 @@ class Bulk(object):
     
     
     
-      
