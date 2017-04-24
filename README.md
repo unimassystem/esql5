@@ -110,7 +110,7 @@ Getting Started
 	cd esql5
 	python -m App.app
 	
-	(with uwsig)
+	(with uwsgi)
 	cd esql5
 	uwsgi --ini conf/uwsgi.ini
 	
