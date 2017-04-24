@@ -147,11 +147,21 @@ def response_nor(res,took):
     return response
 
 
+def _parse_cat_json(res,response):
+    cols= {}
+    for row in res:
+        for col in row.keys():
+            cols[col] = True
+    response['cols'] = list(cols.keys())
+    for row in res:
+        record=[]
+        for col in response['cols']:
+            record.append(row[col])
+        response['rows'].append(record)     
+    pass
 
-def response_cat(res,took):
-    response = {}
-    response['cols'] = []
-    response['rows'] = []
+
+def _parse_cat_plain(res,response):
     lines =  res.split('\n')
     head = ' '.join(lines[0].split())
     response['cols'] = head.split()
@@ -160,7 +170,19 @@ def response_cat(res,took):
             continue
         row = ' '.join(line.split())
         response['rows'].append(row.split())
+    pass
 
+
+def response_cat(res,took):
+    response = {}
+    response['cols'] = []
+    response['rows'] = []
+    
+    if type(res) == str:
+        _parse_cat_plain(res,response)
+    else:
+        _parse_cat_json(res,response)
+    
     response['total'] = len(response['rows'])
     response['took'] = took
     return response

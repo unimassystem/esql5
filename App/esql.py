@@ -97,7 +97,7 @@ class Esql():
             return response_error(str(e))
         
         stmt_res = res
-
+   
         end_time = time.time()
         
         took = int((end_time - start_time)*1000)
