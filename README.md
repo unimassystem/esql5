@@ -105,9 +105,15 @@ Getting Started
 	pip install -r esql5.egg-info/requires.txt
 	或python setup.py install
 	
-	运行esql5服务:
+	运行esql5服务 
+	(standalone):
 	cd esql5
 	python -m App.app
+	
+	(with uwsig)
+	cd esql5
+	uwsgi --ini conf/uwsgi.ini
+	
 	
 	shell终端:
 	python -m elsh.Command
