@@ -72,7 +72,6 @@ class TK(AutoNumber):
     TOK_EXPLAIN = ()
     
     TOK_DESC_TABLE = ()
-    TOK_SHOW = ()
     TOK_SHOW_TABLES = ()
     TOK_DROP_TABLE = ()
 
@@ -590,9 +589,6 @@ def p_TOK_DELETE(p):
     
     
 '''=================================show========================================'''  
-def p_SHOW(p):
-    '''TOK_SHOW : TOK_SHOW_TABLES'''
-    p[0] = p[1]
     
     
 def p_SHOW_TABLES(p):

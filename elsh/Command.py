@@ -21,7 +21,10 @@ from pygments.lexers.sql import SqlLexer
 
 
 sql_completer = WordCompleter(['create', 'select', 'insert', 'drop',
-                               'delete', 'from', 'where', 'table','\\connect'], ignore_case=True)
+                               'delete', 'from', 'where', 'table',
+                               'bulk','update','limit','group','by',
+                               'index.number_of_shards','index.number_of_replicas',
+                               'index.flush_inteval','moving_avg','date_range','date_histogram'], ignore_case=True)
 
 
 def do_esql(database,statement):

@@ -49,7 +49,6 @@ tokens = (
     'COMPARE_TYPE',
     'WORD',
     'NUMBER',
-    'END_QUERY',
     'COMMA',
     'QUOTE_STRING',
     'DQUOTE_STRING'
