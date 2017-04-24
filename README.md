@@ -102,15 +102,15 @@ Getting Started
 	
 	
 	安装第三方依赖包
-	pip install -r esql5.egg-info/requires.txt (或pip3 install -r esql5.egg-info/requires.txt)
-	或python setup.py install (或python3 setup.py install)
+	pip install -r esql5.egg-info/requires.txt
+	或python setup.py install
 	
 	运行esql5服务:
 	cd esql5
-	python -m App.app (或python3 -m App.app)
+	python -m App.app
 	
 	shell终端:
-	python -m elsh.Command (或python3 -m elsh.Command )
+	python -m elsh.Command
 
 
 
