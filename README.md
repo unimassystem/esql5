@@ -93,4 +93,25 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
 	select count(*) as total, moving_avg({buckets_path=total}) from my_index group by date_histogram({field=timestamp,interval='1h'});
 	
 	
+Getting Started
+----------------
+	环境要求python >= 2.7
+
+	export PYTHONHOME=(%python_path)
+	export PATH=$PYTHONHOME/bin:$PATH
 	
+	
+	安装第三方依赖包
+	pip install -r esql5.egg-info/requires.txt (或pip3 install -r esql5.egg-info/requires.txt)
+	或python setup.py install (或python3 setup.py install)
+	
+	运行esql5服务:
+	cd esql5
+	python -m App.app (或python3 -m App.app)
+	
+	shell终端:
+	python -m elsh.Command (或python3 -m elsh.Command )
+
+
+
+
