@@ -2,6 +2,8 @@
 elsh is an interactive esql5 command line interface (CLI) SQL shell with autocompletion. support elasticserch5.x,2.x,1.x
 ![](https://github.com/unimassystem/esql5/blob/master/elsh.png)
 
+explain
+![](https://github.com/unimassystem/esql5/blob/master/explain.png)
 
 特性介绍
 ----------------
