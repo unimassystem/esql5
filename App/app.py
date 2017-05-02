@@ -6,7 +6,7 @@ Created on Apr 21, 2017
 
 from flask import Flask
 from flask import request
-from App.utils import response_error
+from App.utils import http_response_error
 from App.esql import Esql
 
 esql = Esql()
@@ -24,7 +24,7 @@ def app_esql():
     sql = request_sql()
     
     if sql == None:
-        return response_error('Statement not found!')
+        return http_response_error('Statement not found!')
     
     return esql.exec_statement(sql)
      

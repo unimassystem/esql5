@@ -22,16 +22,14 @@ class Explain(object):
         
         stmt = None
         self.dsl_body = {}
-        self.curl_str = ''
-        
-        es_url = 'http://localhost:9200/'
+#         self.curl_str = ''
+#         
+#         es_url = 'http://localhost:9200/'
         
         if exec_node.get_type() == TK.TOK_QUERY:
             stmt = Query(exec_node)
-            self.curl_str = 'curl -XPOST ' + es_url + stmt._index + '/' + stmt._type + '/_search'
+#             self.curl_str = 'curl -XPOST ' + es_url + stmt._index + '/' + stmt._type + '/_search'
             self.dsl_body = stmt.dsl()
-        
-
                 
     def dsl(self):
         return self.dsl_body

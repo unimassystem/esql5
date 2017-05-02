@@ -92,6 +92,37 @@ elsh is an interactive esql5 command line interface (CLI) SQL shell with autocom
 	pipeline统计 move_avg
 	select count(*) as total, moving_avg({buckets_path=total}) from my_index group by date_histogram({field=timestamp,interval='1h'});
 	
+
+#explain
+
+
+
+	esql> explain select max(KSSJ) from my_test group by date_histogram({field=ts,interval='1h'});
+	
+	{
+	  "_source": [], 
+	  "aggs": {
+	    "ts": {
+	      "aggs": {
+	        "_0_max": {
+	          "max": {
+	            "field": "KSSJ"
+	          }
+	        }
+	      }, 
+	      "date_histogram": {
+	        "field": "ts", 
+	        "interval": "1h"
+	      }
+	    }
+	  }, 
+	  "query": {
+	    "match_all": {}
+	  }, 
+	  "size": 0
+	}
+	
+
 	
 Getting Started
 ----------------

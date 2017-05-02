@@ -4,7 +4,7 @@ Created on Apr 19, 2017
 @author: qs
 '''
 
-from App.utils import response_error,response_succes
+from App.utils import http_response_error,http_response_succes,http_response_nor
 import yaml
 import os
 from elasticsearch import Elasticsearch
@@ -22,6 +22,8 @@ from ql.dsl.Insert import Insert,Bulk
 from ql.dsl.Update import Update,Upsert
 from ql.dsl.Delete import Delete
 from ql.dsl.Drop import Drop
+from ql.dsl.Explain import Explain
+
 import time
 
 
@@ -44,20 +46,20 @@ class Esql():
         try:
             stmt = Query(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         
         try:
             hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_nor(str(e))
         
         stmt_res = None
         try:
             stmt_res = response_hits(hits)
         except Exception as e:
-            return response_error(str(e))
+            return http_response_nor(str(e))
         
-        return response_succes(stmt_res)
+        return http_response_succes(stmt_res)
     
     
     def _exec_create_table(self,ast):
@@ -66,14 +68,14 @@ class Esql():
         try:
             stmt = Create(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_nor('Parse statement to dsl error!')
         try:
             res = self.es_handler.indices.create(index=stmt._index,body = stmt._options,request_timeout=100,ignore= 400)
             if stmt._type == None:
                 stmt._type = 'base'
             res = self.es_handler.indices.put_mapping(index = stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_nor(str(e))
         
         stmt_res = None
         
@@ -83,8 +85,8 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_nor(str(e))
+        return http_response_succes(stmt_res)
     
     
     def _exec_show_tables(self,ast):
@@ -94,7 +96,7 @@ class Esql():
         try:
             res = self.es_handler.cat.indices(v=True,bytes='b',h=['index','status','pri','rep','docs.count','store.size'])
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = res
    
@@ -104,8 +106,8 @@ class Esql():
         try:
             stmt_res = response_cat(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
         
     
@@ -114,11 +116,11 @@ class Esql():
         try:
             stmt = Describe(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             res = self.es_handler.indices.get_mapping(index = stmt._index, doc_type = stmt._type)
         except ElasticsearchException as e:
-            return response_error(e.error)
+            return http_response_error(e.error)
 
         stmt_res = None
         
@@ -128,8 +130,8 @@ class Esql():
         try:
             stmt_res = response_mappings(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
     
     def _exec_drop_table(self,ast):
@@ -137,11 +139,11 @@ class Esql():
         try:
             stmt = Drop(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             res = self.es_handler.indices.delete(index = stmt._index)
         except ElasticsearchException as e:
-            return response_error(e.error)
+            return http_response_error(e.error)
         
         stmt_res = None
         
@@ -151,15 +153,15 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
     def _exec_insert_into(self,ast):
         start_time = time.time()
         try:
             stmt = Insert(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             parms = stmt.metas
             if stmt._type == None:
@@ -167,7 +169,7 @@ class Esql():
             res = self.es_handler.index(index = stmt._index,doc_type =  stmt._type, body = stmt.dsl(),**parms)
             
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
         end_time = time.time()
@@ -175,8 +177,8 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
     
     def _exec_bulk_into(self,ast):
@@ -184,22 +186,22 @@ class Esql():
         try:
             stmt = Bulk(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             if stmt._type == None:
                 stmt._type = 'base'
             res = self.es_handler.bulk(index = stmt._index,doc_type = stmt._type, body = stmt.dsl())
             
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
 
         try:
             stmt_res = response_bulk(res)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
     
     
@@ -208,14 +210,14 @@ class Esql():
         try:
             stmt = Update(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             if stmt._type == None:
                 stmt._type = 'base'
             res = self.es_handler.update(index = stmt._index, doc_type = stmt._type, body = stmt.dsl(), **stmt.conditions)
             
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
 
@@ -224,8 +226,8 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
     
     def _exec_upsert(self,ast):
@@ -233,14 +235,14 @@ class Esql():
         try:
             stmt = Upsert(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             if stmt._type == None:
                 stmt._type = 'base'
             res = self.es_handler.update(index = stmt._index, doc_type = stmt._type, body = stmt.dsl(), **stmt.conditions)
             
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
 
@@ -249,8 +251,8 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
     
         
     def _exec_delete(self,ast):
@@ -258,14 +260,14 @@ class Esql():
         try:
             stmt = Delete(ast)
         except Exception:
-            return response_error('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             if stmt._type == None:
                 stmt._type = 'base'
             res = self.es_handler.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions)
             
         except ElasticsearchException as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
 
@@ -274,18 +276,27 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return response_error(str(e))
-        return response_succes(stmt_res)
+            return http_response_error(str(e))
+        return http_response_succes(stmt_res)
+    
+    
+    def _exec_explain(self,ast):
+        try:
+            stmt = Explain(ast)
+        except Exception:
+            return http_response_error('Parse statement to dsl error!')
+        return http_response_nor(stmt.dsl(),202)
+    
     
     def exec_statement(self,sql):
         ast = None
         try:
             ast = self.parser.parse(lexer=self.lexer.clone(),debug=False,input=sql)
         except Exception as e:
-            return response_error(str(e))
+            return http_response_error(str(e))
 
         if ast == None:
-            return response_error('parse statement error')
+            return http_response_error('parse statement error')
         
         if ast.get_type() == TK.TOK_QUERY:
             return self._exec_query(ast)
@@ -307,9 +318,10 @@ class Esql():
             return self._exec_delete(ast)
         elif ast.get_type() == TK.TOK_DROP_TABLE:
             return self._exec_drop_table(ast)    
-            
+        elif ast.get_type() == TK.TOK_EXPLAIN:
+            return self._exec_explain(ast)
         else:
-            return response_error('Syntax not supported!')
+            return http_response_error('Syntax not supported!')
         
         
         
