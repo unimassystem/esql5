@@ -35,10 +35,15 @@ class Esql():
         conf_file = open(os.path.join(ESQL_HOME,'conf','esql.yml'), 'r')
         app_conf = yaml.load(conf_file)
         conf_file.close()
-        es_hosts = app_conf['elastic'].get('hosts')
-        self.es_handler = Elasticsearch(es_hosts)
+        self.es_hosts = app_conf['elastic'].get('hosts')
+        self.es_handler = Elasticsearch(self.es_hosts)
         self.lexer = lex(module=lexer,optimize=True,debug=False)
         self.parser = yacc(debug=False,module=parser)
+    
+    
+    def get_host_url(self):
+        return "http://" + self.es_hosts[0]['host'] + ":" + str(self.es_hosts[0]['port'])
+    
     
     
     def _exec_query(self,ast):
