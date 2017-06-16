@@ -56,7 +56,7 @@ class Esql():
         try:
             hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
         except ElasticsearchException as e:
-            return http_response_nor(str(e))
+            return http_response_error(str(e))
         
         stmt_res = None
         try:
@@ -73,7 +73,7 @@ class Esql():
         try:
             stmt = Create(ast)
         except Exception:
-            return http_response_nor('Parse statement to dsl error!')
+            return http_response_error('Parse statement to dsl error!')
         try:
             res = self.es_handler.indices.create(index=stmt._index,body = stmt._options,request_timeout=100,ignore= 400)
             if stmt._type == None:
@@ -90,7 +90,7 @@ class Esql():
         try:
             stmt_res = response_nor(res,took)
         except Exception as e:
-            return http_response_nor(str(e))
+            return http_response_error(str(e))
         return http_response_succes(stmt_res)
     
     

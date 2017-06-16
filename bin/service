@@ -17,5 +17,32 @@ cd $path
 HOME=`pwd`
 export PYTHONHOME=$HOME/python36
 #nohup $PYTHONHOME/bin/python3 -m App.app >& /dev/null &
-bin/uwsgi --ini conf/uwsgi.ini &
 
+CONF=conf/uwsgi.ini
+PID=var/run/uwsgi.pid
+
+if [ $# == 0 ]
+then
+	echo "Usage: service {start|stop}"
+	exit
+fi
+
+if [ $1 == 'start' ]
+then
+	if [ -f $PID ]
+	then
+		echo "uwsgi already running"
+		exit
+	fi
+	bin/uwsgi --ini $CONF &
+        exit
+elif [ $1 == 'stop' ]
+then
+	if [ ! -f $PID ]
+        then
+                echo "uwsgi not running"
+                exit
+        fi
+	bin/uwsgi --stop $PID
+	rm -fr $PID
+fi
