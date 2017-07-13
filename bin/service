@@ -20,6 +20,11 @@ export PYTHONHOME=$HOME/python36
 
 CONF=conf/uwsgi.ini
 PID=var/run/uwsgi.pid
+RUN=var/run
+if [ ! -d $RUN ]
+then
+	mkdir -p $RUN
+fi
 
 if [ $# == 0 ]
 then
