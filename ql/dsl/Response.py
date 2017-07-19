@@ -76,7 +76,10 @@ def parse_aggs_rows(aggs,bks,depth,rows,bucket_vals=[]):
         mts = {}
         for mertic in aggs.keys():
             if type(aggs[mertic]) == dict and 'value' in aggs[mertic].keys():
-                mts[mertic] = aggs[mertic]['value']
+                if 'value_as_string' in aggs[mertic].keys():
+                    mts[mertic] = aggs[mertic]['value_as_string']
+                else:
+                    mts[mertic] = aggs[mertic]['value']
         rows.append((row,mts))
         if len(bucket_vals) > 0:
             bucket_vals.pop(len(bucket_vals) - 1) 
