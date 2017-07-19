@@ -41,7 +41,7 @@ def do_esql(database,statement):
         gb = json.loads(res.data.decode('utf-8'))
         table = gb['rows']
         headers = gb['cols']
-        print(tabulate(table, headers, tablefmt="grid"))
+        print(tabulate(table, headers, tablefmt="grid",disable_numparse=True))
         if 'total' not in gb:
             gb['total'] = 0
         if 'took' not in gb:

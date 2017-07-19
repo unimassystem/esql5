@@ -63,7 +63,6 @@ class Esql():
             stmt_res = response_hits(hits)
         except Exception as e:
             return http_response_nor(str(e))
-        
         return http_response_succes(stmt_res)
     
     
