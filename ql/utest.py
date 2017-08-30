@@ -36,8 +36,7 @@ def exec_query(stmt):
     
     val = my_parser.parse(lexer=my_lexer.clone(),debug=False,input=sql)
 
-      
-    es = Elasticsearch([{'host':"10.68.23.84","port":9200}])
+    es = Elasticsearch([{'host':"10.68.23.81","port":9201}])
     if val.get_type() == TK.TOK_QUERY:
         
         query = Query(val)
@@ -211,7 +210,7 @@ if __name__ == "__main__":
 #         from my_index02 
 #         group by name,date_histogram({field=ts,interval='1h'});''',
 #         
-        '''drop table my_ttt''',
+        '''select * from config_log where app_name in ('login','policy')''',
         
         ]
 

@@ -8,10 +8,10 @@ from ql.dsl import parse_left_values,parse_right_values,parse_value,parse_object
 from ql.parse.ASTNode import Node
 from ql.parse.parser import TK
 
-def query_string_query(left_val,right_val):
+def query_string_query(left_val,right_val,operator='AND'):
     return {
         'query_string':{
-            'default_operator': 'AND',
+            'default_operator': operator,
             'query': right_val,
             'fields': left_val
         }
@@ -95,7 +95,10 @@ def compare_expression_dsl(compare,left_val,right_val):
         return wildcard_query(left_val,right_val)
     
 
+def in_expression_dsl(left_val,right_val):
+    return query_string_query(left_val,' '.join(right_val),'OR')
     
+
 class FunctionExpression(object):
     __slots__ = ('function_name','function_parms')
     def __init__(self,tree: Node):
@@ -103,14 +106,24 @@ class FunctionExpression(object):
         self.function_parms = tree.get_children()
     def dsl(self):
         return function_expression_dsl(self.function_name,self.function_parms)
-
-
+    
+    
+class INExpression(object):
+    __slots__ = ('left_values','right_value')
+    def __init__(self,tree: Node):
+        self.left_values = parse_left_values(tree.get_child(0).get_children())
+        self.right_value = parse_right_values(tree.get_child(1).get_children())
+    def dsl(self):
+        return in_expression_dsl(self.left_values,self.right_value)
+    
 
 def query_expression(tree: Node):
     if tree.get_type() == TK.TOK_COMPARE:
         return CompareExpression(tree)
     if tree.get_type() == TK.TOK_FUNCTION:
         return FunctionExpression(tree)
+    if tree.get_type() == TK.TOK_IN:
+        return INExpression(tree)
     
        
 class CompareExpression(object):

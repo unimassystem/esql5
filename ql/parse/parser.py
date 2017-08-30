@@ -48,6 +48,7 @@ class TK(AutoNumber):
     TOK_FUNCTION = ()
     TOK_EXPRESSION = ()
     TOK_COMPARE = ()
+    TOK_IN = ()
     TOK_REVERSED = ()
     TOK_COMPOUND = ()
     TOK_EXPRESSION_LEFT = ()
@@ -259,7 +260,8 @@ def p_EXPRESSION_OPERATOR_EXPR(p):
 
 def p_EXPRESSION_EXPR(p):
     '''EXPRESSION_EXPR : TOK_EXPRESSION
-    | TOK_FUNCTION_EXPR'''
+    | TOK_FUNCTION_EXPR
+    | TOK_IN_EXPR'''
     p[0] = p[1]
     
     
@@ -292,7 +294,7 @@ def p_TOK_FUNCTION_EXPR(p):
     | TOK_ISNULL'''
     p[0] = p[1]
     
-    
+   
 def p_TOK_FUNCTION(p):
     '''TOK_FUNCTION : VALUE_EXPR TOK_TUPLE_OBJECT'''
     p[0] = ASTNode.Node(TK.TOK_FUNCTION,p[1].get_value(),p[2].get_children())
@@ -313,6 +315,10 @@ def p_TOK_ISNULL(p):
         p[0] = ASTNode.Node(TK.TOK_REVERSED,'NOT'.lower(),[expression])
 
 
+def p_TOK_IN_EXPR(p):
+    '''TOK_IN_EXPR : TOK_EXPRESSION_LEFT IN TOK_TUPLE_OBJECT'''
+    p[0] = p[0] = ASTNode.Node(TK.TOK_IN,p[2],[p[1],p[3]])
+    
 '''==========================================table define==========================================='''
 
 

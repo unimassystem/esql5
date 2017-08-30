@@ -24,7 +24,7 @@ reserved = {
     'drop': 'DROP',
     'and': 'AND',
     'or': 'OR',
-#     'in': 'IN',
+    'in': 'IN',
     'as': 'AS',
     'with': 'WITH',
     'meta': 'META',
