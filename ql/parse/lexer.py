@@ -84,6 +84,7 @@ def t_QUOTE_STRING(t):
 
 def t_DQUOTE_STRING(t):
     r'"((?<=\\)\"|[^\"])*"'
+    t.value = t.value[1:-1]
     return t
 
 

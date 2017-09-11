@@ -29,12 +29,20 @@ def parse_left_values(tree: Node) -> list:
         retval.append(parse_value(e))
     return retval
     
-
+def parse_tok_value(tree: Node):
+    if tree.children != None:
+        if tree.get_child(0).get_type() == TK.TOK_DQ_VALUE:
+            return '"' + tree.get_value() + '"'
+    return tree.get_value()
+    
+    
 def parse_right_values(tree: Node):
     retval = []
     for e in tree:
-        if e.get_type() in (TK.TOK_VALUE,TK.TOK_DOT):
+        if e.get_type() == TK.TOK_DOT:
             retval.append(parse_value(e))
+        elif e.get_type() == TK.TOK_VALUE:
+            retval.append(parse_tok_value(e))
         else:
             retval.append(parse_object(e))
     return retval

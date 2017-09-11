@@ -46,10 +46,10 @@ Rule 40    VALUE_EXPR -> TOK_DICT_OBJECT
 Rule 41    VALUE_EXPR -> TOK_LIST_OBJECT
 Rule 42    TOK_DOT -> TOK_VALUE . TOK_VALUE
 Rule 43    TOK_DOT -> TOK_VALUE . TOK_DOT
-Rule 44    TOK_VALUE -> WORD
-Rule 45    TOK_VALUE -> QUOTE_STRING
-Rule 46    TOK_VALUE -> NUMBER
-Rule 47    TOK_VALUE -> DQUOTE_STRING
+Rule 44    TOK_VALUE -> DQUOTE_STRING
+Rule 45    TOK_VALUE -> WORD
+Rule 46    TOK_VALUE -> QUOTE_STRING
+Rule 47    TOK_VALUE -> NUMBER
 Rule 48    TOK_VALUE -> *
 Rule 49    TOK_VALUE -> WORD *
 Rule 50    EXPRESSION_EXPR -> NOT EXPRESSION_EXPR
@@ -154,7 +154,7 @@ COMPARE_TYPE         : 60
 CREATE               : 72
 DELETE               : 129
 DESC                 : 114 131
-DQUOTE_STRING        : 47
+DQUOTE_STRING        : 44
 DROP                 : 132
 EXPLAIN              : 2
 FROM                 : 26 95 129
@@ -168,11 +168,11 @@ LIMIT                : 94
 META                 : 71
 NOT                  : 50 68
 NULL                 : 67 68
-NUMBER               : 46 106
+NUMBER               : 47 106
 OPTION               : 70
 OR                   : 52
 ORDER                : 92
-QUOTE_STRING         : 45
+QUOTE_STRING         : 46
 SELECT               : 95
 SET                  : 126 128
 SHOW                 : 130
@@ -184,7 +184,7 @@ UPSERT               : 128
 VALUES               : 119 125
 WHERE                : 93 126 128 129
 WITH                 : 70 71
-WORD                 : 44 49 74 87 90 91
+WORD                 : 45 49 74 87 90 91
 [                    : 15 16
 ]                    : 15 16
 error                : 
@@ -504,10 +504,10 @@ state 16
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -520,10 +520,10 @@ state 16
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -560,20 +560,20 @@ state 18
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -595,20 +595,20 @@ state 19
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -644,20 +644,20 @@ state 22
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -732,10 +732,10 @@ state 27
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -746,10 +746,10 @@ state 27
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -805,20 +805,20 @@ state 30
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -840,20 +840,20 @@ state 31
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1191,124 +1191,124 @@ state 47
 
 state 48
 
-    (44) TOK_VALUE -> WORD .
-    (49) TOK_VALUE -> WORD . *
+    (44) TOK_VALUE -> DQUOTE_STRING .
 
-    .               reduce using rule 44 (TOK_VALUE -> WORD .)
-    BETWEEN         reduce using rule 44 (TOK_VALUE -> WORD .)
-    IS              reduce using rule 44 (TOK_VALUE -> WORD .)
-    (               reduce using rule 44 (TOK_VALUE -> WORD .)
-    AS              reduce using rule 44 (TOK_VALUE -> WORD .)
-    COMMA           reduce using rule 44 (TOK_VALUE -> WORD .)
-    FROM            reduce using rule 44 (TOK_VALUE -> WORD .)
-    SET             reduce using rule 44 (TOK_VALUE -> WORD .)
-    $end            reduce using rule 44 (TOK_VALUE -> WORD .)
-    IN              reduce using rule 44 (TOK_VALUE -> WORD .)
-    COMPARE_TYPE    reduce using rule 44 (TOK_VALUE -> WORD .)
-    LIKE            reduce using rule 44 (TOK_VALUE -> WORD .)
-    ]               reduce using rule 44 (TOK_VALUE -> WORD .)
-    WHERE           reduce using rule 44 (TOK_VALUE -> WORD .)
-    ASC             reduce using rule 44 (TOK_VALUE -> WORD .)
-    DESC            reduce using rule 44 (TOK_VALUE -> WORD .)
-    ORDER           reduce using rule 44 (TOK_VALUE -> WORD .)
-    LIMIT           reduce using rule 44 (TOK_VALUE -> WORD .)
-    GROUP           reduce using rule 44 (TOK_VALUE -> WORD .)
-    @               reduce using rule 44 (TOK_VALUE -> WORD .)
-    AND             reduce using rule 44 (TOK_VALUE -> WORD .)
-    )               reduce using rule 44 (TOK_VALUE -> WORD .)
-    OR              reduce using rule 44 (TOK_VALUE -> WORD .)
-    }               reduce using rule 44 (TOK_VALUE -> WORD .)
-    *               shift and go to state 92
+    .               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    BETWEEN         reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    IS              reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    (               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    AS              reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    COMMA           reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    FROM            reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    SET             reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    $end            reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    IN              reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    COMPARE_TYPE    reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    LIKE            reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    ]               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    WHERE           reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    ASC             reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    DESC            reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    ORDER           reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    LIMIT           reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    GROUP           reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    @               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    AND             reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    )               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    OR              reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
+    }               reduce using rule 44 (TOK_VALUE -> DQUOTE_STRING .)
 
 
 state 49
 
-    (45) TOK_VALUE -> QUOTE_STRING .
+    (45) TOK_VALUE -> WORD .
+    (49) TOK_VALUE -> WORD . *
 
-    .               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    BETWEEN         reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    IS              reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    (               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    AS              reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    COMMA           reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    FROM            reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    SET             reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    $end            reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    IN              reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    COMPARE_TYPE    reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    LIKE            reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    ]               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    WHERE           reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    ASC             reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    DESC            reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    ORDER           reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    LIMIT           reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    GROUP           reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    @               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    AND             reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    )               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    OR              reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
-    }               reduce using rule 45 (TOK_VALUE -> QUOTE_STRING .)
+    .               reduce using rule 45 (TOK_VALUE -> WORD .)
+    BETWEEN         reduce using rule 45 (TOK_VALUE -> WORD .)
+    IS              reduce using rule 45 (TOK_VALUE -> WORD .)
+    (               reduce using rule 45 (TOK_VALUE -> WORD .)
+    AS              reduce using rule 45 (TOK_VALUE -> WORD .)
+    COMMA           reduce using rule 45 (TOK_VALUE -> WORD .)
+    FROM            reduce using rule 45 (TOK_VALUE -> WORD .)
+    SET             reduce using rule 45 (TOK_VALUE -> WORD .)
+    $end            reduce using rule 45 (TOK_VALUE -> WORD .)
+    IN              reduce using rule 45 (TOK_VALUE -> WORD .)
+    COMPARE_TYPE    reduce using rule 45 (TOK_VALUE -> WORD .)
+    LIKE            reduce using rule 45 (TOK_VALUE -> WORD .)
+    ]               reduce using rule 45 (TOK_VALUE -> WORD .)
+    WHERE           reduce using rule 45 (TOK_VALUE -> WORD .)
+    ASC             reduce using rule 45 (TOK_VALUE -> WORD .)
+    DESC            reduce using rule 45 (TOK_VALUE -> WORD .)
+    ORDER           reduce using rule 45 (TOK_VALUE -> WORD .)
+    LIMIT           reduce using rule 45 (TOK_VALUE -> WORD .)
+    GROUP           reduce using rule 45 (TOK_VALUE -> WORD .)
+    @               reduce using rule 45 (TOK_VALUE -> WORD .)
+    AND             reduce using rule 45 (TOK_VALUE -> WORD .)
+    )               reduce using rule 45 (TOK_VALUE -> WORD .)
+    OR              reduce using rule 45 (TOK_VALUE -> WORD .)
+    }               reduce using rule 45 (TOK_VALUE -> WORD .)
+    *               shift and go to state 92
 
 
 state 50
 
-    (46) TOK_VALUE -> NUMBER .
+    (46) TOK_VALUE -> QUOTE_STRING .
 
-    .               reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    BETWEEN         reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    IS              reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    (               reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    AS              reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    COMMA           reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    FROM            reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    SET             reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    $end            reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    IN              reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    COMPARE_TYPE    reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    LIKE            reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    ]               reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    WHERE           reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    ASC             reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    DESC            reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    ORDER           reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    LIMIT           reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    GROUP           reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    @               reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    AND             reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    )               reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    OR              reduce using rule 46 (TOK_VALUE -> NUMBER .)
-    }               reduce using rule 46 (TOK_VALUE -> NUMBER .)
+    .               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    BETWEEN         reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    IS              reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    (               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    AS              reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    COMMA           reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    FROM            reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    SET             reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    $end            reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    IN              reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    COMPARE_TYPE    reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    LIKE            reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    ]               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    WHERE           reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    ASC             reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    DESC            reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    ORDER           reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    LIMIT           reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    GROUP           reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    @               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    AND             reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    )               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    OR              reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
+    }               reduce using rule 46 (TOK_VALUE -> QUOTE_STRING .)
 
 
 state 51
 
-    (47) TOK_VALUE -> DQUOTE_STRING .
+    (47) TOK_VALUE -> NUMBER .
 
-    .               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    BETWEEN         reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    IS              reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    (               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    AS              reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    COMMA           reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    FROM            reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    SET             reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    $end            reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    IN              reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    COMPARE_TYPE    reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    LIKE            reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    ]               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    WHERE           reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    ASC             reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    DESC            reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    ORDER           reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    LIMIT           reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    GROUP           reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    @               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    AND             reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    )               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    OR              reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
-    }               reduce using rule 47 (TOK_VALUE -> DQUOTE_STRING .)
+    .               reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    BETWEEN         reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    IS              reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    (               reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    AS              reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    COMMA           reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    FROM            reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    SET             reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    $end            reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    IN              reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    COMPARE_TYPE    reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    LIKE            reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    ]               reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    WHERE           reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    ASC             reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    DESC            reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    ORDER           reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    LIMIT           reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    GROUP           reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    @               reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    AND             reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    )               reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    OR              reduce using rule 47 (TOK_VALUE -> NUMBER .)
+    }               reduce using rule 47 (TOK_VALUE -> NUMBER .)
 
 
 state 52
@@ -1367,10 +1367,10 @@ state 53
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -1383,10 +1383,10 @@ state 53
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1421,10 +1421,10 @@ state 54
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -1432,10 +1432,10 @@ state 54
     (16) TOK_LIST_OBJECT -> . [ ]
 
     ]               shift and go to state 98
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1457,20 +1457,20 @@ state 55
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1520,20 +1520,20 @@ state 59
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1569,20 +1569,20 @@ state 62
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1638,10 +1638,10 @@ state 65
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -1654,10 +1654,10 @@ state 65
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1735,10 +1735,10 @@ state 68
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -1749,10 +1749,10 @@ state 68
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -1808,10 +1808,10 @@ state 69
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -1822,10 +1822,10 @@ state 69
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2023,10 +2023,10 @@ state 81
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2039,10 +2039,10 @@ state 81
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2095,20 +2095,20 @@ state 84
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2144,10 +2144,10 @@ state 85
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2160,10 +2160,10 @@ state 85
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2191,20 +2191,20 @@ state 86
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2225,20 +2225,20 @@ state 87
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2294,10 +2294,10 @@ state 90
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2305,10 +2305,10 @@ state 90
     (16) TOK_LIST_OBJECT -> . [ ]
 
     )               shift and go to state 140
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2324,19 +2324,19 @@ state 91
 
     (42) TOK_DOT -> TOK_VALUE . . TOK_VALUE
     (43) TOK_DOT -> TOK_VALUE . . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
 
     TOK_VALUE                      shift and go to state 141
@@ -2498,10 +2498,10 @@ state 101
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2514,10 +2514,10 @@ state 101
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2567,10 +2567,10 @@ state 102
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2583,10 +2583,10 @@ state 102
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2665,10 +2665,10 @@ state 107
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2681,10 +2681,10 @@ state 107
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2815,10 +2815,10 @@ state 114
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2829,10 +2829,10 @@ state 114
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2888,10 +2888,10 @@ state 115
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -2902,10 +2902,10 @@ state 115
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -2970,20 +2970,20 @@ state 118
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3010,10 +3010,10 @@ state 120
 
     (60) COMPARE_TYPE_EXPR -> COMPARE_TYPE .
 
+    DQUOTE_STRING   reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     WORD            reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     QUOTE_STRING    reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     NUMBER          reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
-    DQUOTE_STRING   reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     *               reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     {               reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
     [               reduce using rule 60 (COMPARE_TYPE_EXPR -> COMPARE_TYPE .)
@@ -3023,10 +3023,10 @@ state 121
 
     (61) COMPARE_TYPE_EXPR -> LIKE .
 
+    DQUOTE_STRING   reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     WORD            reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     QUOTE_STRING    reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     NUMBER          reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
-    DQUOTE_STRING   reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     *               reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     {               reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
     [               reduce using rule 61 (COMPARE_TYPE_EXPR -> LIKE .)
@@ -3053,10 +3053,10 @@ state 122
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -3069,10 +3069,10 @@ state 122
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3419,10 +3419,10 @@ state 144
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -3435,10 +3435,10 @@ state 144
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3502,20 +3502,20 @@ state 146
     (24) VALUES_EXPR -> . VALUE_EXPR COMMA VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3588,10 +3588,10 @@ state 151
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -3602,10 +3602,10 @@ state 151
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3696,10 +3696,10 @@ state 157
     (27) LEFT_RESERVED_VALUES_EXPR -> . TO
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -3712,10 +3712,10 @@ state 157
 
     FROM            shift and go to state 33
     TO              shift and go to state 47
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -3980,17 +3980,17 @@ state 174
 state 175
 
     (97) TOK_FROM -> TOK_TABLE_NAME @ . TOK_VALUE
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
 
     TOK_VALUE                      shift and go to state 201
@@ -4005,20 +4005,20 @@ state 176
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -4175,10 +4175,10 @@ state 184
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -4189,10 +4189,10 @@ state 184
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -4250,10 +4250,10 @@ state 185
     (30) LEFT_VALUE_EXPR -> . LEFT_RESERVED_VALUES_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
@@ -4264,10 +4264,10 @@ state 185
 
     NOT             shift and go to state 68
     (               shift and go to state 69
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -4467,20 +4467,20 @@ state 200
     (34) RIGHT_VALUE_EXPR -> . VALUE_EXPR
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54
@@ -4688,20 +4688,20 @@ state 219
     (41) VALUE_EXPR -> . TOK_LIST_OBJECT
     (42) TOK_DOT -> . TOK_VALUE . TOK_VALUE
     (43) TOK_DOT -> . TOK_VALUE . TOK_DOT
-    (44) TOK_VALUE -> . WORD
-    (45) TOK_VALUE -> . QUOTE_STRING
-    (46) TOK_VALUE -> . NUMBER
-    (47) TOK_VALUE -> . DQUOTE_STRING
+    (44) TOK_VALUE -> . DQUOTE_STRING
+    (45) TOK_VALUE -> . WORD
+    (46) TOK_VALUE -> . QUOTE_STRING
+    (47) TOK_VALUE -> . NUMBER
     (48) TOK_VALUE -> . *
     (49) TOK_VALUE -> . WORD *
     (14) TOK_DICT_OBJECT -> . { KV_ELEMENTS_EXPR }
     (15) TOK_LIST_OBJECT -> . [ VALUES_EXPR ]
     (16) TOK_LIST_OBJECT -> . [ ]
 
-    WORD            shift and go to state 48
-    QUOTE_STRING    shift and go to state 49
-    NUMBER          shift and go to state 50
-    DQUOTE_STRING   shift and go to state 51
+    DQUOTE_STRING   shift and go to state 48
+    WORD            shift and go to state 49
+    QUOTE_STRING    shift and go to state 50
+    NUMBER          shift and go to state 51
     *               shift and go to state 52
     {               shift and go to state 53
     [               shift and go to state 54

@@ -20,6 +20,7 @@ class AutoNumber(Enum):
 class TK(AutoNumber):
     TOK_IDENTIFIER = ()
     TOK_VALUE = ()
+    TOK_DQ_VALUE = ()
     TOK_DOT = ()
     TOK_LIST = ()
     TOK_DICT = ()
@@ -221,13 +222,17 @@ def p_TOK_DOT(p):
     '''TOK_DOT : TOK_VALUE "." TOK_VALUE
     | TOK_VALUE "." TOK_DOT'''
     p[0] = ASTNode.Node(TK.TOK_DOT,p[2],[p[1],(p[3])])
-       
+
+
+def p_TOK_DQ_VALUE(p):
+    '''TOK_VALUE : DQUOTE_STRING'''
+    p[0] = ASTNode.Node(TK.TOK_VALUE,p[1],[ASTNode.Node(TK.TOK_DQ_VALUE,None,None)]) 
+    
        
 def p_TOK_VALUE(p):
     '''TOK_VALUE : WORD
     | QUOTE_STRING
     | NUMBER
-    | DQUOTE_STRING
     | "*"'''
     p[0] = ASTNode.Node(TK.TOK_VALUE,p[1],None)
  
