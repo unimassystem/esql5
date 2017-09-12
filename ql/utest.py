@@ -214,7 +214,7 @@ if __name__ == "__main__":
 #         from my_index02 
 #         group by name,date_histogram({field=ts,interval='1h'});''',
 #         
-        '''select * from "config_log-'23'".base where app_name in ("login",'policy')''',
+        '''select * from "config_log-'23'".base where app_name in ("login",'policy') and app_id > 1001 and app_ii = "1001"''',
         
         ]
 

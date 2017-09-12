@@ -135,7 +135,10 @@ class CompareExpression(object):
         if tree.get_child(0).get_type() == TK.TOK_EXPRESSION_LEFT:      
             self.left_values = parse_left_values(tree.get_child(0).get_children())
         if tree.get_child(1).get_type() == TK.TOK_EXPRESSION_RIGHT:
-            self.right_value = parse_value(tree.get_child(1).get_child(0))
+            if len(parse_right_values(tree.get_child(1).get_children())) > 0:
+                self.right_value = parse_right_values(tree.get_child(1).get_children())[0]
+            else:
+                self.right_value = None
     def dsl(self):
         return compare_expression_dsl(self.compare,self.left_values,self.right_value)
     
