@@ -144,12 +144,13 @@ Getting Started
 	python -m App.app
 	
 	(with uwsgi)
-	cd esql5
-	uwsgi --ini conf/uwsgi.ini
+	cd esql5/bin
+	./service start
 	
 	
 	shell终端:
-	python -m elsh.Command
+	cd esql5/bin
+	./elsh	
 
 
 
