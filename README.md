@@ -137,7 +137,18 @@ Getting Started
 	安装第三方依赖包
 	pip install -r esql5.egg-info/requires.txt
 	或python setup.py install
+		
+	修改配置文件esql5/conf
 	
+		elastic: {
+		   hosts: [
+		     {
+		       host: 127.0.0.1
+		       port: 9200
+		     }
+		   ]
+		}
+		
 	运行esql5服务 
 	(standalone):
 	cd esql5
@@ -151,7 +162,5 @@ Getting Started
 	shell终端:
 	cd esql5/bin
 	./elsh	
-
-
 
 
