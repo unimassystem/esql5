@@ -18,6 +18,7 @@ class connector():
     def close(self):
         pass
     
+
 class cursor():
     __slots__ = ('_db_host','_res','description','total','took')
     
