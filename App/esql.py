@@ -23,7 +23,6 @@ from ql.dsl.Update import Update,Upsert
 from ql.dsl.Delete import Delete
 from ql.dsl.Drop import Drop
 from ql.dsl.Explain import Explain
-
 import time
 
 
@@ -57,10 +56,14 @@ class Esql():
             hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
         except ElasticsearchException as e:
             return http_response_error(str(e))
-        
+        try:
+            mappings = self.es_handler.indices.get_mapping(index=stmt._index, doc_type = stmt._type)
+        except ElasticsearchException as e:
+            return http_response_error(str(e))
+        selecols = stmt.dsl()['_source']
         stmt_res = None
         try:
-            stmt_res = response_hits(hits)
+            stmt_res = response_hits(hits,mappings,selecols)
         except Exception as e:
             return http_response_nor(str(e))
         return http_response_succes(stmt_res)

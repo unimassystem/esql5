@@ -28,13 +28,12 @@ def parse_hits_cols(hits):
     return list(fields.keys())
 
 
-def parse_hits(hits):
-    
+def parse_hits(cols,hits):
     if 'hits' not in hits:
         return
     hits = hits['hits']
     metas = ['_id','_index','_type']
-    cols = parse_hits_cols(hits)
+#     cols = parse_hits_cols(hits)
     rows = []
     for hit in hits:
         rows.append(parse_hit(cols,metas,hit))
@@ -120,13 +119,35 @@ def parse_aggregations(aggs):
     return retval
 
 
-def response_hits(res):
+def get_type_cols(tp):
+    if 'properties' in tp.keys():
+        return tp['properties'].keys()
+
+def get_inx_cols(inx):
+    cols=[]
+    if 'mappings' in inx.keys():
+        for tp in inx['mappings']:
+            cols.extend(get_type_cols(inx['mappings'][tp]))
+    return cols
+
+def get_cols(mappings):
+    cols=[]
+    for inx in mappings.keys():
+        cols.extend(get_inx_cols(mappings[inx]))
+    return list(set(cols))
+
+
+def response_hits(res,mappings,selecols):
     response = {}
+    if len(selecols) == 1 and selecols[0] == '*':
+        cols = get_cols(mappings)
+    else:
+        cols = selecols    
     if 'aggregations' in res.keys():
         response =  parse_aggregations(res['aggregations'])
         response['total'] = len(response['rows'])
     elif 'hits' in res.keys() and 'aggregations' not in res.keys():
-        response = parse_hits(res['hits'])
+        response = parse_hits(cols,res['hits'])
         response['total'] = res['hits']['total']
     else:
         response['cols'] = []
