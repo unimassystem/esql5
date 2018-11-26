@@ -6,8 +6,7 @@ Created on Mar 15, 2017
 from ql.parse.ASTNode import Node
 from ql.parse.parser import TK
 from ql.dsl import parse_tok_table_name
-from ql.dsl.Update import parse_conditions
-
+from ql.dsl.QueryBody import QueryBody
 
 
 
@@ -18,10 +17,13 @@ class Delete(object):
             if element.get_type() == TK.TOK_TABLE_NAME:
                 (self._index,self._type) = parse_tok_table_name(element)
             if element.get_type() == TK.TOK_WHERE:
-                self.conditions = parse_conditions(element)
-                
+                self.conditions = QueryBody(element.get_child(0))
+                          
     def dsl(self):
-        return {}
+        dsl_body = {}
+        if hasattr(self, 'conditions'):
+            dsl_body['query'] = self.conditions.dsl()
+        return dsl_body
         
     
     

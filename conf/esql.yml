@@ -2,7 +2,7 @@ elastic: {
    hosts: [
      {
        host: 10.68.23.81,
-       port: 9200
+       port: 19200
      }
    ]
 }

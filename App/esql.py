@@ -269,9 +269,10 @@ class Esql():
         except Exception:
             return http_response_error('Parse statement to dsl error!')
         try:
-            if stmt._type == None:
-                stmt._type = 'base'
-            res = self.es_handler.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions)
+#             if stmt._type == None:
+#                 stmt._type = 'base'
+            res = self.es_handler.delete_by_query(index = stmt._index, doc_type = stmt._type, body = stmt.dsl())
+#             res = self.es_handler.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions)
             
         except ElasticsearchException as e:
             return http_response_error(str(e))

@@ -36,7 +36,7 @@ def exec_query(stmt):
     
     val = my_parser.parse(lexer=my_lexer.clone(),debug=False,input=sql)
 
-    es = Elasticsearch([{'host':"10.68.23.81","port":9201}])
+    es = Elasticsearch([{'host':"10.68.23.81","port":19200}])
     
     
     val.debug()
@@ -123,7 +123,8 @@ def exec_query(stmt):
         
         stmt = Delete(val)
         
-        res = es.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions,ignore= 404)
+        res = es.delete_by_query(index = stmt._index, doc_type = stmt._type, body = stmt.dsl())
+#         res = es.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions,ignore= 404)
 
         print(json.dumps(res,indent=4))
         
@@ -207,19 +208,20 @@ if __name__ == "__main__":
 #             
 #          '''upsert  my_index_occ.base set name1 = 'lisi' ,age1 = 30,address1={address='shanghai',postCode='3300100009'} where _id = 1''',
 #            
-#         '''delete from my_index_occ where _id = 1;''',
+          '''delete from test_ts where 1 = 1'''
 #         
 #                        
 #         '''explain select count(*) as c,count(*) as cc ,sum(dd) as dd,moving_avg({buckets_path=c,window=30,model=simple}), moving_avg({buckets_path=dd,window=30,model=simple})  
 #         from my_index02 
 #         group by name,date_histogram({field=ts,interval='1h'});''',
 #         
-        '''select * from "config_log-'23'".base where app_name in ("login",'policy') and app_id > 1001 and app_ii = "2001"''',
+#         '''select * from "config_log-'23'".base where app_name in ("login",'policy') and app_id > 1001 and app_ii = "2001"''',
         
         
         ]
 
         for sql in sqls:
+            print(sql)
             exec_query(sql)
                 
     else: 
