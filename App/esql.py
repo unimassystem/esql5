@@ -53,7 +53,10 @@ class Esql():
             return http_response_error('Parse statement to dsl error!')
         
         try:
-            hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
+            if hasattr(stmt, 'route'):
+                hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(),routing = stmt.route, request_timeout=100)
+            else:
+                hits = self.es_handler.search(index=stmt._index, doc_type = stmt._type, body = stmt.dsl(), request_timeout=100)
         except ElasticsearchException as e:
             return http_response_error(str(e))
         try:
@@ -269,11 +272,7 @@ class Esql():
         except Exception:
             return http_response_error('Parse statement to dsl error!')
         try:
-#             if stmt._type == None:
-#                 stmt._type = 'base'
-            res = self.es_handler.delete_by_query(index = stmt._index, doc_type = stmt._type, body = stmt.dsl())
-#             res = self.es_handler.delete(index = stmt._index, doc_type = stmt._type, **stmt.conditions)
-            
+            res = self.es_handler.delete_by_query(index = stmt._index, doc_type = stmt._type, body = stmt.dsl(),timeout='30m')            
         except ElasticsearchException as e:
             return http_response_error(str(e))
         

@@ -42,6 +42,7 @@ reserved = {
     'explain': 'EXPLAIN',
     'show': 'SHOW',
     'tables': 'TABLES',
+    'routing': 'ROUTING'
 }
 
 

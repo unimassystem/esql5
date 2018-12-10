@@ -36,7 +36,7 @@ def exec_query(stmt):
     
     val = my_parser.parse(lexer=my_lexer.clone(),debug=False,input=sql)
 
-    es = Elasticsearch([{'host':"10.68.23.81","port":19200}])
+    es = Elasticsearch([{'host':"10.68.23.81","port":9200}])
     
     
     val.debug()
@@ -49,9 +49,18 @@ def exec_query(stmt):
         
         print(query._index,query._type)
         
-        res = es.search(index=query._index, doc_type = query._type, body=query.dsl(), request_timeout=100)
+        if hasattr(query, 'route'):
+            res = es.search(index=query._index, doc_type = query._type, body=query.dsl(),routing=query.route, request_timeout=100)
+        else:
+            res = es.search(index=query._index, doc_type = query._type, body=query.dsl(), request_timeout=100)
+            
+        mappings = es.indices.get_mapping(index=query._index, doc_type = query._type)
+        
+        selecols = query.dsl()['_source']
+        
+        stmt_res = None
       
-        stmt_res = response_hits(res)
+        stmt_res = response_hits(res,mappings,selecols)
       
         print(json.dumps(stmt_res,indent=4))
         
@@ -204,11 +213,11 @@ if __name__ == "__main__":
 #             (2,'zhangsan',25,{address='zhejiang',postCode='330010'},['sms:001','sms:002'])''', 
 #  
 #          
-#         '''update my_index_occ.base set name = 'lisi' ,age = 30,address={address='shanghai',postCode='3300100009'} where _id = 1''',
+#        '''update my_index_occ.base set name = 'lisi' ,age = 30,address={address='shanghai',postCode='3300100009'} where _id = 1''',
 #             
 #          '''upsert  my_index_occ.base set name1 = 'lisi' ,age1 = 30,address1={address='shanghai',postCode='3300100009'} where _id = 1''',
 #            
-          '''delete from test_ts where 1 = 1'''
+#           '''delete from test_ts where 1 = 1'''
 #         
 #                        
 #         '''explain select count(*) as c,count(*) as cc ,sum(dd) as dd,moving_avg({buckets_path=c,window=30,model=simple}), moving_avg({buckets_path=dd,window=30,model=simple})  
@@ -216,7 +225,7 @@ if __name__ == "__main__":
 #         group by name,date_histogram({field=ts,interval='1h'});''',
 #         
 #         '''select * from "config_log-'23'".base where app_name in ("login",'policy') and app_id > 1001 and app_ii = "2001"''',
-        
+          '''select * from qs_001@'3301' ''',
         
         ]
 
