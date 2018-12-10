@@ -85,6 +85,9 @@ explain
 
 	select * from my_table.my_index where name like 'john *' and age between 20 and 30 and (hotel = 'hanting' or flight = 'MH4510');
 	
+	查询指定路由
+	select * from my_table@'00001' where name = 'jack';
+
 	地理位置中心点查询
 	select * from hz_point where geo_distance({distance='1km',location='30.306378,120.247427'});
 	
