@@ -166,4 +166,26 @@ Getting Started
 	cd esql5/bin
 	./elsh	
 
+	JDBC驱动:
+	https://github.com/unimassystem/elasticsearch-jdbc
+ 	
+	String sql = "select SRC_IP,SRC_PORT from my_test* where SRC_PORT between 10 and 100 limit 1000";
+	String url = "jdbc:elasticsearch://127.0.0.1:5000";
+	Connection connection = DriverManager.getConnection(url, "test", null);
+	Statement statement = connection.createStatement();
+	ResultSet rs = statement.executeQuery(sql);
+	ResultSetMetaData meta = rs.getMetaData();
+	String columns = "|";
+	for (int i = 0; i < meta.getColumnCount(); i++) {
+		columns += meta.getColumnLabel(i) + " | ";
+	}
+	System.out.println(columns);
+	while (rs.next()) {
+		String row = "|";
+		for (int i = 0; i < meta.getColumnCount(); i++) {
+			row += rs.getString(i) + " | ";
+		}
+		System.out.println(row);
+	}
+
 
